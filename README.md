@@ -1,2 +1,2 @@
-# ATX-Thunder
+# atx-thunder
 ATX Thunder Baseball Club
