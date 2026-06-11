@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATX Thunder 14U/15U Registration</title>
+    <style>
+        :root {
+            --navy: #0F1A30;
+            --carolina-blue: #7BC2EC;
+            --gold: #F1C40F;
+            --white: #ffffff;
+            --light-bg: #f4f6f9;
+            --text-dark: #333333;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--navy);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem 1rem;
+            border-bottom: 4px solid var(--gold);
+        }
+
+        header h1 {
+            color: var(--gold);
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        header p {
+            color: var(--carolina-blue);
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .grid-layout {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .grid-layout {
+                grid-template-columns: 1.1fr 0.9fr;
+            }
+        }
+
+        /* Image Display Box */
+        .poster-container {
+            background-color: var(--navy);
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .poster-img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+        }
+
+        /* Content & Payment Box */
+        .details-panel {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--carolina-blue);
+        }
+
+        .details-panel h2 {
+            color: var(--navy);
+            margin-bottom: 1rem;
+        }
+
+        .venmo-box {
+            background-color: #e8f4fd;
+            border-left: 5px solid var(--carolina-blue);
+            padding: 1rem;
+            margin-top: 1.5rem;
+            border-radius: 4px;
+        }
+
+        .venmo-handle {
+            color: #008CFF;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* Registration Form Styles */
+        .form-panel {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            margin-top: 2rem;
+            border-top: 4px solid var(--navy);
+        }
+
+        .form-panel h2 {
+            color: var(--navy);
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid var(--light-bg);
+            padding-bottom: 0.5rem;
+        }
+
+        .form-section-title {
+            font-weight: bold;
+            color: var(--navy);
+            margin: 1.5rem 0 0.75rem 0;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+        }
+
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="date"],
+        select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #cccccc;
+            border-radius: 4px;
+            font-size: 1rem;
+            background-color: #fafafa;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: var(--carolina-blue);
+            background-color: var(--white);
+        }
+
+        .tip-box {
+            background-color: #fff9e6;
+            border-left: 5px solid var(--gold);
+            padding: 0.75rem;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+            border-radius: 4px;
+            color: #665200;
+        }
+
+        .number-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.5rem;
+        }
+
+        .hat-option {
+            margin: 0.75rem 0;
+            padding: 0.75rem;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .hat-option:hover {
+            background-color: #fcfcfc;
+        }
+
+        .hat-option input {
+            margin-right: 0.5rem;
+        }
+
+        #fitted-size-container {
+            display: none;
+            margin-top: 1rem;
+            padding-left: 1rem;
+            border-left: 3px solid var(--gold);
+        }
+
+        .submit-btn {
+            background-color: var(--navy);
+            color: var(--white);
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            font-weight: bold;
+            width: 100%;
+            border-radius: 4px;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: background-color 0.2s;
+            margin-top: 1.5rem;
+            border-bottom: 4px solid #000000;
+        }
+
+        .submit-btn:hover {
+            background-color: #172a4d;
+        }
+
+        footer {
+            background-color: var(--navy);
+            color: var(--white);
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 4rem;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>ATX Thunder Baseball</h1>
+        <p>National Select Program 14U / 15U — Summer 2026</p>
+    </header>
+
+    <div class="container">
+        
+        <!-- Top Half: Poster & Payment Instructions -->
+        <div class="grid-layout">
+            <div class="poster-container">
+                <!-- Replace 'poster.jpg' with the actual filename of your uploaded poster image -->
+                <img src="poster.jpg" alt="ATX Thunder Summer 2026 Poster" class="poster-img">
+            </div>
+
+            <div class="details-panel">
+                <h2>Roster Roster Registration</h2>
+                <p>Welcome to the digital hub for the ATX Thunder 14U/15U Summer 2026 Select season. Secure your spot by completing the registration form below and finalizing your player investment.</p>
+                
+                <div class="venmo-box">
+                    <h3>💳 Payment Instructions</h3>
+                    <p style="margin-top: 0.5rem;">Player Investment: <strong>$695</strong> (Includes uniform + 1 custom hat).</p>
+                    <p style="margin-top: 0.5rem;">Please submit payment via Venmo to secure your roster selection:</p>
+                    <p style="margin-top: 0.5rem;"><span class="venmo-handle">@beecavethunder</span></p>
+                    <p style="margin-top: 0.5rem; font-size: 0.85rem; color: #555555;"><em>Note: Please include the player's name and "14U/15U Summer 2026" in the Venmo payment description.</em></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Half: Registration Form -->
+        <div class="form-panel">
+            <h2>Player Registration Form</h2>
+            <form action="#" method="POST" id="registration-form">
+                
+                <!-- Section 1: Player Info -->
+                <div class="form-section-title">1. Player Details</div>
+                <div class="form-group">
+                    <label for="player-name">Player's Full Name *</label>
+                    <input type="text" id="player-name" name="player-name" required placeholder="First and Last Name">
+                </div>
+                <div class="form-group">
+                    <label for="player-dob">Player Date of Birth *</label>
+                    <input type="date" id="player-dob" name="player-dob" required>
+                </div>
+                <div class="grid-layout" style="grid-template-columns: 1fr 1fr; gap: 1rem; margin: 0;">
+                    <div class="form-group">
+                        <label for="primary-pos">Primary Position</label>
+                        <input type="text" id="primary-pos" name="primary-pos" placeholder="e.g., Catcher, RHP">
+                    </div>
+                    <div class="form-group">
+                        <label for="secondary-pos">Secondary Position(s)</label>
+                        <input type="text" id="secondary-pos" name="secondary-pos" placeholder="e.g., CF, 3B">
+                    </div>
+                </div>
+
+                <!-- Section 2: Uniform & Sizing -->
+                <div class="form-section-title">2. Uniform Jersey Sizing</div>
+                <div class="form-group">
+                    <label for="jersey-size">Jersey Size *</label>
+                    <select id="jersey-size" name="jersey-size" required>
+                        <option value="" disabled selected>-- Select Jersey Size --</option>
+                        <option value="Youth Medium">Youth Medium</option>
+                        <option value="Youth Large">Youth Large</option>
+                        <option value="Adult Small">Adult Small</option>
+                        <option value="Adult Medium">Adult Medium</option>
+                        <option value="Adult Large">Adult Large</option>
+                        <option value="Adult XL">Adult XL</option>
+                        <option value="Adult XXL">Adult XXL</option>
+                    </select>
+                    <div class="tip-box">
+                        💡 <strong>Sizing Tip:</strong> We highly recommend selecting <strong>one size larger</strong> than your player's current fit to comfortably accommodate physical growth through the 2026 season.
+                    </div>
+                </div>
+
+                <!-- Section 3: Jersey Number Choices -->
+                <div class="form-section-title">3. Jersey Number Choices</div>
+                <p style="font-size: 0.9rem; margin-bottom: 0.5rem; color: #555555;">Numbers are assigned on a first-come, first-served basis upon completed payment. Please enter your top 4 options:</p>
+                <div class="number-grid form-group">
+                    <div>
+                        <label for="num-1" style="font-size: 0.85rem;">Choice 1 *</label>
+                        <input type="text" id="num-1" name="num-1" required maxLength="3" placeholder="#1">
+                    </div>
+                    <div>
+                        <label for="num-2" style="font-size: 0.85rem;">Choice 2 *</label>
+                        <input type="text" id="num-2" name="num-2" required maxLength="3" placeholder="#2">
+                    </div>
+                    <div>
+                        <label for="num-3" style="font-size: 0.85rem;">Choice 3 *</label>
+                        <input type="text" id="num-3" name="num-3" required maxLength="3" placeholder="#3">
+                    </div>
+                    <div>
+                        <label for="num-4" style="font-size: 0.85rem;">Choice 4 *</label>
+                        <input type="text" id="num-4" name="num-4" required maxLength="3" placeholder="#4">
+                    </div>
+                </div>
+
+                <!-- Section 4: Hat Options -->
+                <div class="form-section-title">4. Custom Hat Selection</div>
+                <div class="form-group">
+                    <label>Choose Your Style *</label>
+                    
+                    <div class="hat-option" onclick="selectHat('blue')">
+                        <input type="radio" id="hat-blue" name="hat-choice" value="Blue Bill" required onclick="toggleHatSizing('blue')">
+                        <strong>Blue Bill Cap (Cloud Logo)</strong> — <em>Adjustable Back</em>
+                    </div>
+
+                    <div class="hat-option" onclick="selectHat('yellow')">
+                        <input type="radio" id="hat-yellow" name="hat-choice" value="Yellow Bill" required onclick="toggleHatSizing('yellow')">
+                        <strong>Yellow Bill Cap (Lightning-Bat Logo)</strong> — <em>Fitted Back</em>
+                    </div>
+
+                    <!-- Hidden Fitted Sizing dropdown, shown only if Fitted option is chosen -->
+                    <div id="fitted-size-container">
+                        <label for="hat-size">Select Fitted Hat Size *</label>
+                        <select id="hat-size" name="hat-size">
+                            <option value="" disabled selected>-- Select Fitted Size --</option>
+                            <option value="6 7/8">6 7/8 (55 cm)</option>
+                            <option value="7">7 (56 cm)</option>
+                            <option value="7 1/8">7 1/8 (57 cm)</option>
+                            <option value="7 1/2">7 1/4 (58 cm)</option>
+                            <option value="7 3/8">7 3/8 (59 cm)</option>
+                            <option value="7 1/2">7 1/2 (60 cm)</option>
+                            <option value="7 5/8">7 5/8 (61 cm)</option>
+                            <option value="7 3/4">7 3/4 (62 cm)</option>
+                        </select>
+                        <div class="tip-box" style="border-left-color: var(--gold); color: #665200;">
+                            ⚠️ <strong>Fitted Sizing Note:</strong> Fitted hats do not stretch. Please ensure you measure accurately as these must fit correctly upon delivery.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 5: Parent Contact -->
+                <div class="form-section-title">5. Parent / Guardian Contact</div>
+                <div class="form-group">
+                    <label for="parent-name">Parent/Guardian Name *</label>
+                    <input type="text" id="parent-name" name="parent-name" required placeholder="First and Last Name">
+                </div>
+                <div class="grid-layout" style="grid-template-columns: 1fr 1fr; gap: 1rem; margin: 0;">
+                    <div class="form-group">
+                        <label for="parent-email">Email Address *</label>
+                        <input type="email" id="parent-email" name="parent-email" required placeholder="email@address.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="parent-phone">Phone Number *</label>
+                        <input type="tel" id="parent-phone" name="parent-phone" required placeholder="(512) 555-0199">
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-btn">Submit Roster Registration</button>
+            </form>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 ATX Thunder Baseball. All rights reserved. Partner of the CTBL.</p>
+    </footer>
+
+    <!-- Form Logic JavaScript -->
+    <script>
+        function selectHat(color) {
+            document.getElementById('hat-' + color).checked = true;
+            toggleHatSizing(color);
+        }
+
+        function toggleHatSizing(selectedOption) {
+            const sizeContainer = document.getElementById('fitted-size-container');
+            const sizeSelect = document.getElementById('hat-size');
+            
+            if (selectedOption === 'yellow') {
+                sizeContainer.style.display = 'block';
+                sizeSelect.required = true;
+            } else {
+                sizeContainer.style.display = 'none';
+                sizeSelect.required = false;
+                sizeSelect.value = ""; // Clear fitted selection if they switch back to adjustable
+            }
+        }
+    </script>
+</body>
+</html>
